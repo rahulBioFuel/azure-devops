@@ -99,8 +99,7 @@
                 "allowVirtualNetworkAccess": true,
                 "allowForwardedTraffic": true,
                 "allowGatewayTransit": false,
-                "useRemoteGateways": false,
-                "enableDdosProtection": true
+                "useRemoteGateways": false
             }
         },
         {
@@ -118,8 +117,7 @@
                 "allowVirtualNetworkAccess": true,
                 "allowForwardedTraffic": true,
                 "allowGatewayTransit": false,
-                "useRemoteGateways": false,
-                "enableDdosProtection": true
+                "useRemoteGateways": false
             }
         }
     ]
