@@ -1,0 +1,94 @@
+Task 1 - Setup Virtual Networks
+
+Subtask 1. Create Virtual Network
+
+1. Create virtual network named EastUS Vnet for hosting web servers (w1, w2) and associate resources in the East us region
+2. Create another virtual network named EastUS2 VNet for hosting the WS11 server in the East US 2 region.
+
+Subtask  2. Vnet to Vnet peering
+
+1. Establish a VNet-to-VNet Peering between EastUS VNet and EastUS2 VNet to allow communication between internal IP addresses.
+2. Ensure traffic encryption during transit.
+
+-----------------------------
+
+Task 2 - Deploy Virtual Machines
+
+Subtask 1. Web Servers in EastUS
+
+1. Deploy two virtual machines, w1 and w2, in the EastUS VNet.
+2. Place both VMs in a single availability set to ensure 99.95% availability.
+3. Configure a Load Balancer to distribute incoming traffic between w1 and w2.
+4. Set up Remote Desktop Gateway (RD Gateway) to allow web administrators to connect without standard RDP clients.
+
+Subtask  2. WS11 Server in EastUS2
+
+1. Deploy a virtual machine named WS11 in the EastUS2 VNet.
+2. Restrict outbound traffic on WS11 to block access to social media sites using Azure Firewall rules.
+
+-----------------------------
+
+Task 3 - Implement Secure Connectivity
+
+Subtask 1. Site-to-Site VPN Gateway or Azure Private Link
+1. Configure either a Site-to-Site VPN Gateway or Azure Private Link for secure communication between resources in EastUS VNet and EastUS2 VNet.
+
+Subtask 2. Network Security Groups (NSGs)
+1. Use Network Security Groups (NSGs) to restrict unauthorised access to resources within the virtual networks.
+
+-----------------------------
+
+Task 4 - Setup Storage Solutions
+
+Subtask 1. EastUS Resources:
+
+1. Configure Zone-Redundant Storage (ZRS) to ensure data resiliency in case of Azure data center failure.
+2. Set up secure access to storage using:
+3. Shared Access Signatures (SAS).
+4. Access Keys.
+5. Role-Based Access Control (RBAC).
+6. Provide application access URLs and keys as part of the setup.
+
+Subtask 2. EastUS2 Resources (WS11):
+
+1. Configure Geo-Redundant Storage (GRS) to ensure high resiliency even during multiple data center failures.
+2. Map the storage to the S: drive on the WS11 server using Azure File Share or Blob Storage with secure credentials.
+
+-----------------------------
+
+Guidelines
+
+Guidelines 1 -->  ARM Templates
+
+Provide a JSON file containing the resource definitions for deploying the entire infrastructure.
+Requirements:
+
+Define the following resources:
+
+Virtual Networks (EastUS VNet, EastUS2 VNet) and their peering connections.
+Virtual Machines (w1, w2, WS11) and their configurations.
+Availability Set for the web servers (w1, w2).
+Load Balancer for distributing traffic to the web servers.
+Azure Firewall with rules to restrict outbound traffic for WS11.
+Storage accounts for EastUS (ZRS) and EastUS2 (GRS) resources.
+
+Guidelines 2 -->  Visual Diagram
+
+Share an architecture diagram that displays all components of the solution. 
+
+Must Include:
+VNets and their peering connections.
+Virtual machines, availability sets, and load balancers.
+Azure Firewall and NSGs.
+Storage configurations and secure access mechanisms.
+Screenshots
+Share screenshots of all the activated services to prove your project is running well.
+
+Guidelines 3 -->  Visual Diagram
+
+Screenshots
+Share screenshots of all the activated services to prove your project is running well.
+
+
+
+

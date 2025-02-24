@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "locationEastUS": {
+            "value": "East US"
+        },
+        "locationEastUS2": {
+            "value": "East US 2"
+        },
+        "vnet1Name": {
+            "value": "EastUSVnet"
+        },
+        "vnet2Name": {
+            "value": "EastUS2Vnet"
+        }
+    }
+}

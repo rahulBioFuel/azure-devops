@@ -1,0 +1,106 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "locationEastUS": {
+            "type": "string",
+            "defaultValue": "East US"
+        },
+        "locationEastUS2": {
+            "type": "string",
+            "defaultValue": "East US 2"
+        },
+        "vnet1Name": {
+            "type": "string",
+            "defaultValue": "EastUSVnet"
+        },
+        "vnet2Name": {
+            "type": "string",
+            "defaultValue": "EastUS2Vnet"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
+            "name": "DeployEastUSVnet",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "<URL-to-VNet-Template>",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "vnetName": {
+                        "value": "[parameters('vnet1Name')]"
+                    },
+                    "location": {
+                        "value": "[parameters('locationEastUS')]"
+                    },
+                    "addressPrefix": {
+                        "value": "10.0.0.0/16"
+                    },
+                    "subnetName": {
+                        "value": "Subnet1"
+                    },
+                    "subnetPrefix": {
+                        "value": "10.0.1.0/24"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
+            "name": "DeployEastUS2Vnet",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "<URL-to-VNet-Template>",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "vnetName": {
+                        "value": "[parameters('vnet2Name')]"
+                    },
+                    "location": {
+                        "value": "[parameters('locationEastUS2')]"
+                    },
+                    "addressPrefix": {
+                        "value": "10.1.0.0/16"
+                    },
+                    "subnetName": {
+                        "value": "Subnet2"
+                    },
+                    "subnetPrefix": {
+                        "value": "10.1.1.0/24"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
+            "name": "DeployVnetPeering",
+            "dependsOn": [
+                "DeployEastUSVnet",
+                "DeployEastUS2Vnet"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "<URL-to-Peering-Template>",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "vnet1Name": {
+                        "value": "[parameters('vnet1Name')]"
+                    },
+                    "vnet2Name": {
+                        "value": "[parameters('vnet2Name')]"
+                    }
+                }
+            }
+        }
+    ]
+}
